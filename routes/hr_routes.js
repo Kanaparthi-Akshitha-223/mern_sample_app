@@ -1,8 +1,11 @@
 let express=require("express");
 let router=express.Router();
+let user=require("../models/users");
 
-router.get("/employees", (req, res) => {
-  res.send("Employees called");
+
+router.get("/employees", async (req, res) => {
+  let result=await user.find();
+  res.send(result);
 });
 
 router.post("/assign-task", (req, res) => {
