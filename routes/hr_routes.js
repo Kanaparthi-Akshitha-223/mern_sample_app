@@ -1,13 +1,17 @@
 let express=require("express");
 let router=express.Router();
-let user=require("../models/users");
-
-
-router.get("/employees", async (req, res) => {
-  let result=await user.find();
+let {users}=require("../models/users");
+router.get("/employees",async (req, res) => {
+  let result=await users.find();
   res.send(result);
 });
 
+router.delete("/deleteemp/:id",async (req, res) => {
+  let result=await users.findByIdAndDelete(req.params.id);
+  if(result){
+  res.send("emp record deleted sucess");
+  }
+});
 router.post("/assign-task", (req, res) => {
   res.send("Task assigned");
 });
