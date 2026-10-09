@@ -29,4 +29,5 @@ def getParticularStudentById(id:int):
     return {"userid":id}
 @app.get("/filterdept")
 def filterdept(dept:str,marks:int):
-    return {"department":dept,"marks":marks}  
+    return {"department":dept,"marks":marks}
+  
